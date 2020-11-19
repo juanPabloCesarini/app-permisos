@@ -20,11 +20,11 @@
             $datos = [
                 "empleados" => $empleados
             ];
-            $this->vista('pages/acceso/home',$datos);
+            $this->vista('pages/acceso/homeView',$datos);
         }
 
         public function login(){
-            $this->vista('pages/acceso/login');
+            $this->vista('pages/acceso/loginView');
         }
 
         public function permitir_entrar(){
@@ -35,14 +35,15 @@
                     'pass' => trim($_POST['pass']),
                 ];
                 $consulta = $this->empleadoModelo->buscarEmpleadosNick($datos);
-                $datosEnBase = [
-                    'idEmpleado' => $consulta->IDempleado,
-                    'usuario' => $consulta->usuario,
-                    'pass' => $consulta->clave,
-                    'rol'  => $consulta->rol,
-                ];
+                
             }
                 if(!empty($consulta)){
+                    $datosEnBase = [
+                        'idEmpleado' => $consulta->IDempleado,
+                        'usuario' => $consulta->usuario,
+                        'pass' => $consulta->clave,
+                        'rol'  => $consulta->rol,
+                    ];
                     if($datos['pass']==$datosEnBase['pass']){
                        // session_start();
                         $_SESSION['idEmpl']=$datosEnBase['idEmpleado'];
@@ -52,13 +53,14 @@
                     }else{
                         $datos=["msj"=>'Usuario o clave incorrectos.',];
                         
-                        $this->vista('pages/acceso/login',$datos);
+                        $this->vista('pages/acceso/loginView',$datos);
                         
                         
                     }
                 }else{
-                    $this->vista('pages/acceso/login');
-			        echo "<script type='text/javascript'> alert('Te olvidaste de registrate.'); </script>";
+                    $datos=["msj"=>'Te olvidaste de registrate.',];
+                    $this->vista('pages/acceso/loginView',$datos);
+			       // echo "<script type='text/javascript'> alert(''); </script>";
 		        }
             } 
         
