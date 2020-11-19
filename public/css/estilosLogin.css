@@ -1,0 +1,61 @@
+#logo {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-top: 35px;
+
+}
+
+.login,
+.image {
+  min-height: 70vh;
+}
+.avatar{
+    width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	display: block;
+	margin: 0 auto;
+}
+.bg-image1{
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* .bg-image2 {
+    background-image: url(../assets/img/man-in-red-long-sleeved-shirt-853151.jpg);
+    background-size: cover;
+    background-position: center;
+} */
+
+.login-heading {
+  font-weight: 300;
+}
+
+
+.btn-href {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  color: white;
+  background: #ae1bc6;
+  border: solid 2px #9d41ac;
+  margin-top: 5px;
+}
+
+.btn-href:hover{
+  background: #9d41ac;
+  border: solid 2px #ae1bc6;
+}
+
+
+.small, .small:hover{
+  color: black;
+  margin:15px;
+}
+a:link{
+  text-decoration: none;
+}

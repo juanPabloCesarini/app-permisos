@@ -1,0 +1,193 @@
+@font-face{ 
+  font-family: 'BebasNeue';
+  src: url(../fuentes/BebasNeue-Regular.ttf);
+}
+@font-face{
+  font-family: 'Quicksand';
+  src: url(../fuentes/Quicksand-SemiBold.ttf);
+}
+
+
+/*-------------------------------------logo FSF --------------------------------------------*/ 
+#logo {
+  position: relative;
+  width: 140px;
+  height: 75px;
+  margin-top: 15px; 
+}
+
+
+/*---------------------------------------- Body -------------------------------------------------*/
+body {   
+  background: linear-gradient(rgb(0, 0, 34),rgba(4, 13, 58, 0.932)),url(../img/escritorio.jpg);
+  background-size: cover;
+  background-position: center;
+  color: #03045e;
+}
+ 
+
+/* Titulos y Subtitulos de las vistas class en h1(titulo) h2(subtitulo) h3(parrafo)*/
+.titulo{
+  font-family:'Quicksand', Courier, monospace;
+  font-size: 45px;
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+}
+.subtitulo{
+  font-family:'Quicksand', Courier, monospace;
+  font-size: 35px;
+  color: #03045e;
+}
+
+.parrafo{
+  font-family:'Quicksand', Courier, monospace;
+  font-size: 25px;
+  color: #03045e;
+}
+
+
+/*----- botones login_btn(login) - btn guardar(form) - btn alta(verde)- baja(azul)- listado(rojo)  -----*/
+
+
+
+/*formulario empleado*/
+.btn-guardar {
+  background-color:  #03045e;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 15px !important;
+  font-weight: 400;
+  height: 43px;
+  cursor: pointer
+}
+.btn-guardar:hover  {
+  background-color: #0096c7;
+}
+
+/*botones alta baja listado*/
+.azul{
+  font-size: 25px;
+  background-color: #0096c7;
+  color: white;
+  border:none;
+  margin-bottom: 42px;
+}
+
+
+.verde{
+  font-size: 25px;
+  background-color: #22aa99;
+  color: white;
+  border:none;
+  margin-bottom: 42px;
+}
+
+.rojo{
+  font-size: 25px;
+  background-color:#e63946;
+  color: white;
+  border:none;
+  margin-bottom: 42px;
+}
+
+/* .btn-submit {
+  border-radius: 10px;
+  border: solid 2px #596bcc;
+  background: #5b68ae;
+  color: #f2f2f2;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background: #5b68ae;
+  border: solid 3px #596bcc;
+  color: black;
+} */
+/*----------------------------- card formulario - card Login ----------------------------------*/
+.form-empleado{
+  padding: 30px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: none !important;
+  height: 370px;
+  width: 200px;
+}
+
+.form-contraseña{
+  padding: 30px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: none !important; 
+  height: 500px;
+  width: 700px;
+}
+
+.form-nuevoempleado{
+  padding: 30px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: none !important; 
+  height: fit-content;
+  width: fit-content;
+}
+
+
+.form-permisos{
+  padding: 30px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: none !important;
+  height: 50%px;
+  width: 50%px;
+}
+
+.form-login{
+  padding: 30px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: none !important;
+  height: 400px;
+  width: 500px;
+}
+
+.input-group-text{
+  background-color: #03045e;
+}
+
+
+/*----- input text area formulario registro empleado -----*/
+input,
+textarea,
+button {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 1px solid rgb(187, 191, 255);
+  font-size: 14px !important;
+  font-weight: 300;
+  
+}
+
+input:focus,
+textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #00BCD4;
+  outline-width: 0;
+  font-weight: 400
+}
+
+
+
+
