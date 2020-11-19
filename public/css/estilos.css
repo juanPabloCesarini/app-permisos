@@ -1,10 +1,10 @@
 @font-face{ 
   font-family: 'BebasNeue';
-  src: url(../fuentes/BebasNeue-Regular.ttf);
+  src: url(../fonts/BebasNeue-Regular.ttf);
 }
 @font-face{
   font-family: 'Quicksand';
-  src: url(../fuentes/Quicksand-SemiBold.ttf);
+  src: url(../fonts/Quicksand-SemiBold.ttf);
 }
 
 
