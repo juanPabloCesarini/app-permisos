@@ -24,7 +24,7 @@
                 <input type="password" class="form-control" placeholder="Contraseña" name="pass" >
             </div>
             
-              <div class="form-group">
+              <div class="form-group justify-content-center d-flex">
                 <input type="submit" value="Entrar" class="float-right btn-guardar">
               </div>
               <?php if (!empty($datos['msj'])==1):?>
@@ -35,10 +35,10 @@
              </form>
           </div>
             <div class="d-flex justify-content-center">
-              <a href="<?php echo RUTA_URL;?>/FSF/modificar_clave/" class="ml-2 mr-2">Antes de loguearte por primera vez debes cambiar tu usuario y contraseña</a>
+              <a href="<?php echo RUTA_URL;?>/FSF/modificar_clave/" class="ml-2 mr-2" style="text-decoration:none">Antes de loguearte por primera vez debes cambiar tu contraseña</a>
             </div>
             <div class="d-flex justify-content-center">
-              <a href="<?php echo RUTA_URL;?>/FSF/pedir_clave_nueva/" class="ml-2 mr-2">Te olvidaste la contraseña?</a>
+              <a href="<?php echo RUTA_URL;?>/FSF/pedir_clave_nueva/" class="ml-2 mr-2" style="text-decoration:none">Te olvidaste la contraseña?</a>
             </div>
           
         </div>

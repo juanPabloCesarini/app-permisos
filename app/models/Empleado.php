@@ -46,14 +46,18 @@
 		}
 		
 		public function actualizarEmpleado($datos){
+			
+		}
+		
+		public function editClave($datosUsuario){
 			$keyw ="keyword";
 			$this->db->query("UPDATE empleados 
-							  SET IDempleado = :id,
-								  usuario = :nick,
-								  pass = aes_encrypt(:pass,:keyword) as clave");
-			$this->db->bind('id',$datos['id_Empleado']);
-			$this->db->bind('nick',$datos['nick_Empleado']);
-			$this->db->bind('pass',$datos['pass_Empleado']);
+							  SET usuario = :nick,
+								  pass = aes_encrypt(:pass,:keyword)
+							  WHERE usuario =:nick");
+			
+			$this->db->bind('nick',$datosUsuario['nick']);
+			$this->db->bind('pass',$datosUsuario['pass']);
 			$this->db->bind('keyword',$keyw);
 			if($this->db->execute()){
             	return true;
@@ -61,7 +65,6 @@
             	return false;
          	}
 		}
-		
 		public function borrarEmpleado($datos){
 			$this->db->query("DELETE FROM empleados WHERE IDempleado =:id");
 			$this->db->bind('id',$datos['idUs']);

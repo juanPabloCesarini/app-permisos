@@ -37,7 +37,7 @@
                 $consulta = $this->empleadoModelo->buscarEmpleadosNick($datos);
                 
             }
-                if(!empty($consulta)){
+            if(!empty($consulta)){
                     $datosEnBase = [
                         'idEmpleado' => $consulta->IDempleado,
                         'usuario' => $consulta->usuario,
@@ -45,48 +45,58 @@
                         'rol'  => $consulta->rol,
                     ];
                     if($datos['pass']==$datosEnBase['pass']){
-                       // session_start();
                         $_SESSION['idEmpl']=$datosEnBase['idEmpleado'];
                         $_SESSION['nick']=$datosEnBase['usuario'];
                         $_SESSION['rol']=$datosEnBase['rol'];
                         $this->home();
                     }else{
                         $datos=["msj"=>'Usuario o clave incorrectos.',];
-                        
-                        $this->vista('pages/acceso/loginView',$datos);
-                        
-                        
+                        $this->vista('pages/acceso/loginView',$datos);         
                     }
-                }else{
+            }else{
                     $datos=["msj"=>'Te olvidaste de registrate.',];
                     $this->vista('pages/acceso/loginView',$datos);
-			       // echo "<script type='text/javascript'> alert(''); </script>";
-		        }
-            } 
+		    }
+        } 
         
 
         public function modificar_clave(){
-            $this->vista('pages/acceso/actualizar_clave');
+            
+            $this->vista('pages/acceso/actualizar_claveView');
         }
 
-        //public function recuperar_clave(){
-        //    if ($_SERVER['REQUEST_METHOD']=='POST'){
-        //        if ( trim($_POST['pwd'])==trim($_POST['pwd2'])){
-//
-        //        }else{
-        //            $err = [
-        //                'msj' => "Las contraseñas no coinciden",
-        //            ];
-        //            $this->vista('pages/acceso/actualizar_clave',$err);
-        //        }
-        //        $datos = [
-        //            
-        //            'nick' => trim($_POST['nick']),
-        //            'pass' => trim($_POST['pass']),
-        //        ];
-        //}
+        public function setear_clave_nueva(){
+            if ($_SERVER['REQUEST_METHOD']=='POST'){
+                $datos = [
+                    'nick' => trim($_POST['nick']),
+                ];
+                $consulta_usuario = $this->empleadoModelo->buscarEmpleadosNick($datos);
+                if ($consulta_usuario==true){
+                    if ( trim($_POST['pwd1'])==trim($_POST['pwd2'])){
+                        $datosUsuario = [
+                            'nick' => trim($_POST['nick']),
+                            'pass' => trim($_POST['pwd1']),
+                        ];
+                        $this->empleadoModelo->editClave($datosUsuario);
+                        $this->vista('pages/acceso/loginView');
+                    }else{
+                            $datos = [
+                                'msj' => "Las contraseñas no coinciden",
+                            ];
+                            $this->vista('pages/acceso/actualizar_claveView',$datos);
+                    }
+                    
+                }else{
+                    $datos = [
+                        'msj' => "Usuario inexistente",
+                    ];
+                    $this->vista('pages/acceso/actualizar_claveView',$datos);
+                }
+            }
+        }
+
         public function pedir_clave_nueva(){
-            $this->vista('pages/acceso/solicitud_clave');
+            $this->vista('pages/acceso/solicitud_claveView');
         }
 
         public function logout(){
