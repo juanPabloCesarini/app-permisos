@@ -23,7 +23,7 @@
          
 		
 
-		public function buscar_permisosAsignados($id){
+		public function buscar_permisosAsignados_idEmpl($id){
 			$this->db->query("SELECT IDpermisosAsignados, 
 									 empleados.IDempleado,
 									 empleados.nombre,
@@ -36,6 +36,17 @@
 								WHERE permisos_asignados.empleadosID = :id
 								ORDER BY permisos.IDpermisos");
 			$this->db->bind('id',$id);
+			$resultado = $this->db->registros();
+			return $resultado;
+
+		}
+
+		public function buscar_permisosAsignados_idPerm($idEmpl,$idPerm){
+			$this->db->query("SELECT permisosID 
+								FROM permisos_asignados 
+								WHERE empleadosID = :idEmpl AND permisosID =:idPerm");
+			$this->db->bind('idEmpl',$idEmpl);
+			$this->db->bind('idPerm',$idPerm);
 			$resultado = $this->db->registros();
 			return $resultado;
 
