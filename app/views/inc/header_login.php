@@ -13,5 +13,5 @@
 <body>
    
    <nav class="navbar navbar-dark bg-transparent mb-3">
-      <span class="navbar-brand mb-0 h1"><img src="<?php echo RUTA_URL;?>/img/logo2.jpg" id="logo" /></span>
+      <span class="navbar-brand mb-0 h1"><img src="<?php echo RUTA_URL;?>/img/logo-FSF.png" id="logo" /></span>
    </nav>
