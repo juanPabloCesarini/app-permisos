@@ -1,6 +1,6 @@
 <?php require RUTA_APP .'/views/inc/header_inside.php';?>
 <div class="container">
-    <h3 class="titulo text-center">Reasignación de Persisos</h3>
+    <h3 class="titulo text-center">Reasignación de Permisos</h3>
     <h5 class="subtitulo text-center">Permisos otorgados a <?php echo $datos['apellido_Empleado'].','.' '.$datos['nombre_Empleado'];?></h5>
 </div>
 <div class="container">
