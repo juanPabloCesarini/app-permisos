@@ -87,6 +87,7 @@
                     }
                     
                 }else{
+                    
                     $datos = [
                         'msj' => "Usuario inexistente",
                     ];
@@ -96,6 +97,7 @@
         }
 
         public function pedir_clave_nueva(){
+            $mail = new phpmailer();
             $this->vista('pages/acceso/solicitud_claveView');
         }
 
@@ -107,8 +109,34 @@
 
 /************************************************ EMPLEADO **************************************/
 
-        public function edicion_datos(){
-            $this->vista('pages/edicion_datos_empleados');
+        public function editar_empleado($id){
+            $empleado = $this->empleadoModelo->buscarEmpleadoId($id);
+            $datos = [
+                'id_empleado' => $empleado->IDempleado,
+                'nombre_empleado' => $empleado->nombre,
+                'apellido_empleado' => $empleado->apellido,
+                'nick_empleado' => $empleado->usuario,
+            ];
+            $this->vista('pages/empleados/edit_empleadoView',$datos);
+        }
+
+        public function actualizar_empleado(){
+            if ($_SERVER['REQUEST_METHOD']== 'POST'){
+                $datos = [
+                    'id_empleado' => trim($_POST['idEmpl']),
+                    'nombre_empleado' => trim($_POST['nombre']),
+                    'apellido_empleado' => trim($_POST['apellido']),
+                    'nick_empleado' => trim($_POST['nick']),
+                ];
+                if ($this->empleadoModelo->editEmpleado($datos)){
+                    $_SESSION['nick']=trim($_POST['nick']);
+                    if ($_SESSION['rol']=="1"){
+                        $this->home();
+                    }else{
+                        $this->editar_empleado($_POST['idEmpl']);
+                    }
+                }
+            }
         }
 
         public function nuevo_empleado(){
@@ -116,7 +144,7 @@
             $datos = [
                 'lst_permisos' => $listado_permisos,
             ];
-            $this->vista('pages/empleados/alta_empleado',$datos);
+            $this->vista('pages/empleados/alta_empleadoView',$datos);
         }
 
         public function guardar_empleado(){
@@ -139,10 +167,10 @@
                     foreach ($_POST['permisos'] as $p) {
                         
                         $datos = [
-                        "id_Empleado" => $empleado->id,
-                        "id_Permiso" => $p,
+                            "id_Empleado" => $empleado->id,
+                            "id_Permiso" => $p,
 
-                    ];
+                        ];
                     $this->permiso_asignadoModelo->guardar_permisos($datos);
                         
                     }
@@ -187,7 +215,7 @@
         public function reasignar_permisos($id){
             $empleado=$this->empleadoModelo->buscarEmpleadoId($id);
             $permisos = $this->permisoModelo->buscar_permisos();
-            $listado_permisos_asig = $this->permiso_asignadoModelo->buscar_permisosAsignados($id);
+            $listado_permisos_asig = $this->permiso_asignadoModelo->buscar_permisosAsignados_idEmpl($id);
             $datos=[
                 "id_Empleado"        => $empleado->IDempleado,
                 "nombre_Empleado"    => $empleado->nombre,
@@ -197,7 +225,7 @@
                 "lst_permisos"       => $listado_permisos_asig,
             ];
             
-            $this->vista('pages/permisos/reasignar_permisos',$datos);
+            $this->vista('pages/permisos/reasignar_permisosView',$datos);
             
         }
 
@@ -224,35 +252,43 @@
         }
 
         public function actualizar_permisos(){
-            $listado_permisosAsignados = $this->permiso_asignadoModelo->buscar_permisosAsignados($_POST['idEmpl']);
-            foreach ($listado_permisosAsignados as $pa) {
-                if(in_array($pa->permisosID, $_POST['permisos'])){ 
-                    die("<script type='text/javascript'> alert('No se puede duplicar el permiso.'); </script>");
-                }else{
+            
+            foreach ($_POST['permisos'] as $p) {
+                $permiso_guardado = $this->permiso_asignadoModelo->buscar_permisosAsignados_idPerm($_POST['idEmpl'],$p);
+                if (empty($permiso_guardado)){
                     $datos = [
                         "id_Empleado"         => $_POST['idEmpl'],
-                        "id_Permiso"          => $pa->permisosID,
-                    ];
+                        "id_Permiso"          => $p,
+                    ]; 
                     $this->permiso_asignadoModelo->guardar_permisos($datos);
 
+                }
+
+                if (!empty($permiso_guardado)){
+                    $empleado=$this->empleadoModelo->buscarEmpleadoId($_POST['idEmpl']);
+                    $listado_permisos_asig = $this->permiso_asignadoModelo->buscar_permisosAsignados_idEmpl($_POST['idEmpl']);
+                    $permisos = $this->permisoModelo->buscar_permisos();
+                    $datos=[
+                        "id_Empleado"        => $empleado->IDempleado,
+                        "nombre_Empleado"    => $empleado->nombre,
+                        "apellido_Empleado"  => $empleado->apellido,
+                        "apodo_Empleado"     => $empleado->usuario,
+                        "permisos_Empleado"  => $permisos,
+                        "lst_permisos"       => $listado_permisos_asig,
+                        "msj"                => 'No se pueden duplicar los permisos',
+                    ];
+                    $this->vista('pages/permisos/reasignar_permisosView',$datos);
                     
-                }           
+                }
             }
 
-            
-            /*foreach ($_POST['permisos'] as $p) {
-                        
-               
-
-                             
-            }*/
-            $this->home();
+            $this->reasignar_permisos($_POST['idEmpl']);
         }
 
 
 /********************************************* RESTAURANTE **************************************/        
-        public function alta_restaurante(){
-            $this->vista('pages/restaurantes/nuevo_resto');
+        public function alta_resto(){
+            $this->vista('pages/restaurantes/alta_restoView');
         }
 
         public function resto_a_base(){
@@ -261,9 +297,8 @@
                 $logoResto = $_FILES['img']['name'];
                 $tipo_logoResto = $_FILES['img']['type'];
                 $tam_logoResto = $_FILES['img']['size'];
-                //$servidor=$_SERVER['DOCUMENT_ROOT'].$ubi;
-                $ubi =RUTA_URL.'/public/img/';
-                echo $ubi;
+                $ubi=$_SERVER['DOCUMENT_ROOT'].'/app-permisos/public/img/logoResto/';
+               
                 if ($tam_logoResto <=1000000){
                     if ($tipo_logoResto == 'image/jpg' || $tipo_logoResto == 'image/jpeg' || $tipo_logoResto == 'image/png'){
                         $logoOK =$logoResto;        
@@ -280,9 +315,8 @@
                             "radio"       => $_POST['radio'],
                         ];
             }           
-            if ($this->restauranteModelo->guardar_resto($datos)){
+            if ($this->restauranteModelo->create_resto($datos)){
                 move_uploaded_file($_FILES['img']['tmp_name'],$ubi.$logoResto);
-                //move_uploaded_file($_FILES['img']['tmp_name'],RUTA_URL."/public/img/logoResto/");
                 if ($_POST['boton']=="Guardar y Salir"){
                     $this->home();
                 }else{
@@ -293,30 +327,83 @@
             }
         }
 
-         public function buscarRestaurantes($vigencia){
-            $restaurantes=$this->restauranteModelo->buscar_resto($vigencia);
+        public function lista_restaurantes(){
+            $restaurantes=$this->restauranteModelo->read_resto();
+            //$restaurantes=$this->restauranteModelo->read_resto_vigencia($vigencia);
             $datos = [
-                "lst_resto" => $restaurantes,
+                "resto" => $restaurantes,
             ];
-            $this->vista('pages/restaurantes/lista_resto',$datos);
+            $this->vista('pages/restaurantes/list_restoView',$datos);
         }
 
-        public function editar_noticias(){
-            $this->vista('pages/editar_news');
+      
+        public function edit_resto($id){
+            $restaurantes = $this->restauranteModelo->read_resto_id($id);
+            $datos = [
+                'resto' => $restaurantes,
+            ];
+            $this->vista('pages/restaurantes/edit_restoView',$datos);
         }
-        public function editar_restaurantes(){
-            $this->vista('pages/editar_resto');
+
+        public function modi_resto(){
+            if ($_SERVER['REQUEST_METHOD']=='POST'){
+
+                $logoResto = $_FILES['img']['name'];
+                $tipo_logoResto = $_FILES['img']['type'];
+                $tam_logoResto = $_FILES['img']['size'];
+                $ubi=$_SERVER['DOCUMENT_ROOT'].'/app-permisos/public/img/logoResto/';
+               
+                if ($tam_logoResto <=1000000){
+                    if ($tipo_logoResto == 'image/jpg' || $tipo_logoResto == 'image/jpeg' || $tipo_logoResto == 'image/png'){
+                        $logoOK =$logoResto;        
+                    }
+                }
+                $datos =[
+                            "id"          => $_POST['id'],
+                            "nombre"      => $_POST['nombre'],
+                            "descripcion" => $_POST['descripcion'],
+                            "direccion"   => $_POST['dire'],
+                            "telefono"    => $_POST['tel'],
+                            "web"         => $_POST['web'],
+                            "logo_name"   => $logoOK,
+                            "vigente"     => $_POST['vigencia'],
+                            "radio"       => $_POST['radio'],
+                        ];
+            }           
+            if ($this->restauranteModelo->update_resto($datos)){
+                move_uploaded_file($_FILES['img']['tmp_name'],$ubi.$logoResto);
+                $this->lista_restaurantes();
+            }
+        }
+
+        public function eliminar_resto($id){
+            if ($this->restauranteModelo->delete_resto($id)){
+                /* $vigencia=$this->restauranteModelo->read_resto_id_vig($id);
+                var_dump($vigencia);
+                $restaurantes=$this->restauranteModelo->read_resto_vigencia($vigencia); */
+               /*  $datos = [
+                    "resto" => $restaurantes,
+                ]; */
+               // var_dump($datos);
+               $this->lista_restaurantes();
+               //$this->vista('pages/restaurantes/list_restoView',$datos); 
+            }else{
+                die('Algo salió mal');
+            }
         }
        
-        public function listado_restaurantes_inactivos(){
-            $this->vista('pages/listar_resto');
+        ///////////////////////// BLOG ////////////////
+        public function alta_blog(){
+            $this->vista('pages/blog/alta_blogView');
         }
-        public function obtener_lista_new(){
-            $this->vista('pages/listar_news');
+        public function edit_blog(){
+            $this->vista('pages/blog/edit_blogView');
         }
-        public function obtener_lista_resto(){
-            $this->vista('pages/listar_resto');
+
+        public function listar_blog(){
+            $this->vista('pages/blog/list_blogView');
         }
+
    }
    
 ?>
