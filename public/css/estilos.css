@@ -52,6 +52,36 @@ width:100%;
   color: #03045e;
 }
 
+.textoicono{
+  font-family:'Quicksand', Courier, monospace;
+  font-size: 30px;
+  padding: 20px;
+  color: rgb(255, 255, 255);
+}
+
+.textonav{
+  font-family:'Quicksand', Courier, monospace;
+  font-size: 24px;
+  padding: 20px;
+  color: #fff;
+  
+}
+
+.textodelete{
+  font-family:'Quicksand', Courier, monospace;
+  font-size: 20px;
+  padding: 20px;
+  color: #e63946;
+
+}
+
+.textoeditar{
+  font-family:'Quicksand', Courier, monospace;
+  font-size: 20px;
+  padding: 20px;
+  color: #0b5f0f;
+
+}
 
 /*----- botones login_btn(login) - btn guardar(form) - btn alta(verde)- baja(azul)- listado(rojo)  -----*/
 .icon-unlocked{
@@ -79,7 +109,7 @@ width:100%;
   cursor: pointer
 }
 .btn-guardar:hover  {
-  background-color: #0264d6;
+  background-color: #0096c7;
 }
 
 /*botones alta baja listado*/
@@ -137,9 +167,6 @@ width:100%;
   border: none !important;
   height: 370px;
   width: 200px;
-  -webkit-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
--moz-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
 }
 
 .form-contraseña{
@@ -149,9 +176,6 @@ box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
   border: none !important; 
   height: 500px;
   width: 700px;
-  -webkit-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
--moz-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
 }
 
 .form-nuevoempleado{
@@ -161,9 +185,6 @@ box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
   border: none !important; 
   height: fit-content;
   width: fit-content;
-  -webkit-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
--moz-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
 }
 
 
@@ -172,11 +193,8 @@ box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
   margin-top: 60px;
   margin-bottom: 60px;
   border: none !important;
-  height: 50%;
-  width: 50%;
-  -webkit-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
--moz-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
+  height: 50%px;
+  width: 50%px;
 }
 
 .form-login{
@@ -186,9 +204,6 @@ box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
   border: none !important;
   height: 400px;
   width: 500px;
-  -webkit-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
--moz-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
-box-shadow: 0px 0px 5px 5px rgba(121,125,127,1);
 }
 
 .input-group-text{
@@ -221,5 +236,8 @@ textarea:focus {
 }
 
 
-
+.img_logo{
+  width: 50px;
+  height: 50px;
+}
 
