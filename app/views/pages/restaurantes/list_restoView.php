@@ -1,32 +1,62 @@
 <?php require RUTA_APP .'/views/inc/header_inside.php';?>
-<?php if ($datos['lst_resto'][0]->estaActivo == "SI"):?>
-<h1 class ="text-center text-white">Restaurantes Vigentes</h1>
-<?php else:?>
-	<?php if (empty($datos['lst_resto'])):?>
-		<h4 class ="text-center text-white">No hay restaurantes inactivos por el momento</h4>
-	<?php endif;?>		
-<h1 class ="text-center text-white">Restaurantes Inactivos</h1>
-<?php endif;?>
-<table class="table">
-   <thead>
-      <tr>
-      	 <th>Logo</th>
-         <th>Nombre</th>
-         <th>Direccion</th>
-      </tr>
-   </thead>
-   <tbody>
-   <?php foreach ($datos['lst_resto'] as $r) : ?>
-         <tr>
-            
-            <td> <img src="<?php echo RUTA_URL; ?>/img/<?php echo $r->logo;?>"></td>
-            <td><?php echo $r->nombre;?></td>
-            <td><?php echo $r->direccion;?></td>
-            <td><a href="<?php echo RUTA_URL;?>/FSF/editar/<?php echo $r->IDrestaurantes;?>"><span class="btn icon-pencil text-success">Editar</a></td>
-            <td><a href="<?php echo RUTA_URL;?>/FSF/eliminar_usuario/<?php echo $r->IDrestaurantes;?>"><span class="btn icon-bin2 text-danger">Borrar</a></td>
-         </tr>
-   <?php endforeach; ?>
-   </tbody>
-</table>
-
+   
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12 col-md-6">
+         <h3 class="subtitulo text-center">Restaurantes activos</h3>
+         <table class="table bg-light">
+            <thead>
+               <tr class="bg-dark">
+      	         <th class="subtitulo text-white text-center">Logo</th>
+                  <th class="subtitulo text-white text-center">Nombre</th>
+                  <th class="subtitulo text-white text-center">Dirección</th>
+                  <th class="text-center"><span class=" subtitulo icon-pencil text-success"></span> </th>
+                  <th class="text-center"><span class=" subtitulo icon-bin2 text-danger"></span> </th>
+               </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($datos['resto'] as $r) : ?>
+               <?php if ($r->estaActivo=='SI'):?>
+                  <tr>
+                     <td class="text-center"> <img class="img_logo" src="<?php echo RUTA_URL?>/img/logoResto/<?php echo $r->logo;?>"></td>
+                     <td><?php echo $r->nombre;?></td>
+                     <td><?php echo $r->direccion;?></td>
+                     <td class="text-center"><a href="<?php echo RUTA_URL;?>/FSF/edit_resto/<?php echo $r->IDrestaurantes;?>" class="btn btn-outline-success ">Editar</a></td>
+                     <td class="text-center"><a href="#" class="btn btn-outline-danger" onclick="confirmar(<?php echo $r->IDrestaurantes;?>,'<?php echo $r->nombre;?>',null)">Borrar</a></td>
+                  </tr>
+               <?php endif;?>
+            <?php endforeach; ?>
+            </tbody>
+         </table>
+      </div>
+      <div class="col-sm-12 col-md-6">
+         <h3 class="subtitulo text-center">Restaurantes Inactivos</h3>
+         <table class="table bg-light">
+            <thead>
+               <tr class="bg-dark">
+               	<th class="subtitulo text-white text-center">Logo</th>
+                  <th class="subtitulo text-white text-center">Nombre</th>
+                  <th class="subtitulo text-white text-center">Dirección</th>
+                  <th class="text-center"><span class=" subtitulo icon-pencil text-success"></span> </th>
+                  <th class="text-center"><span class=" subtitulo icon-bin2 text-danger"></span> </th>
+               </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($datos['resto'] as $r) : ?>
+               <?php if ($r->estaActivo=='NO'):?>
+                  <tr>
+                     <td class="text-center"> <img class="img_logo" src="<?php echo RUTA_URL?>/img/logoResto/<?php echo $r->logo;?>"></td>
+                     <td><?php echo $r->nombre;?></td>
+                     <td><?php echo $r->direccion;?></td>
+                     <td class="text-center"><a href="<?php echo RUTA_URL;?>/FSF/edit_resto/<?php echo $r->IDrestaurantes;?>" class="btn btn-outline-success ">Editar</a></td>
+                     <td class="text-center"><a href="#" class="btn btn-outline-danger " onclick="confirmar('<?php echo $r->IDrestaurantes;?>','<?php echo $r->nombre;?>',null)">Borrar</a></td>
+                  </tr>
+               <?php endif;?>
+            <?php endforeach; ?>
+            </tbody>
+         </table>
+      </div>
+   </div>
+ 
+</div>
 <?php require RUTA_APP .'/views/inc/footer.php';?>

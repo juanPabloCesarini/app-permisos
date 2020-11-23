@@ -1,11 +1,11 @@
 <?php require RUTA_APP .'/views/inc/header_inside.php';?>
 <div class="container">
       <div class="row justify-content-center align-items-center vh-100">
-        <div class="rojo p-3 my-1">
-          <h3 class="p-3 text-center">Ingreso de publicidad restaurantes</h3>
+        <div class=" p-3 my-1">
+          <h3 class="p-3 titulo text-light text-center">Ingreso de publicidad restaurantes</h3>
         </div>
         <div class="col-sm-12">
-          <form action="<?php echo RUTA_URL;?>/FSF/resto_a_base/" method="post" enctype="multipart/form-data" class="formulario">
+          <form action="<?php echo RUTA_URL;?>/FSF/resto_a_base/" method="post" enctype="multipart/form-data" >
             <div class="form-row my-2">
               <div class="form-control-lg col-sm-2">
                 <label for="nombre" class="text-white">Nombre:</label>
@@ -61,7 +61,7 @@
                   <label for="exampleFormControlFile1"class="text-white">Logo:</label>
               </div>
               <div class="form-control-lg col-sm-4">
-                  <input type="file" class="form-control-lg form-control-file text-white" name="img" required id="exampleFormControlFile1">
+                  <input type="file" class=" form-control-file text-white" name="img" required id="exampleFormControlFile1">
               </div>
             </div>
               <div class="form-row my-2">
@@ -87,10 +87,10 @@
               </div>
             <div class="form-row">
               <div class="col-sm-6">
-                <input type="submit" class="btn btn-lg btn-block text-white rojo text-uppercase font-weight-bold my-2" value="Guardar y Seguir" name="boton"></input>
+                <input type="submit" class="btn btn-lg btn-outline-secondary btn-block text-white text-uppercase font-weight-bold my-2" value="Guardar y Seguir" name="boton"></input>
               </div>
               <div class="col-sm-6">
-                <input type="submit" class="btn btn-lg btn-block text-white rojo text-uppercase font-weight-bold my-2" value="Guardar y Salir"name="boton"></input>
+                <input type="submit" class="btn btn-lg btn-outline-secondary btn-block text-white  text-uppercase font-weight-bold my-2" value="Guardar y Salir"name="boton"></input>
               </div>
             </div>
           </form>

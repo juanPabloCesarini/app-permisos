@@ -2,25 +2,19 @@
 
 <div class="container">
       <div class="row justify-content-center align-items-center vh-100">
-        <div class="bg-tit p-3 my-1">
-          <h3 class="p-3">Ingreso de publicidad restaurantes</h3>
+        <div class="p-3 my-1">
+          <h3 class="p-3 titulo">Actualización de publicidad restaurantes</h3>
         </div>
         <div class="col-sm-12">
-            <?php
-                require_once('../../restoMOD/modelos/restaurantes_CRUD.php');
-                $id_resto = $_GET['id'];
-                $crud = new CrudResto();
-                $resto = $crud->buscar_rest_id($id_resto);
-                foreach ($resto as $r){
-            ?>
-          <form action="../controladores/editResto.php" method="post" enctype="multipart/form-data" class="formulario">
-            <input type="hidden" name="id" value="<?php echo $r->getIDrestaurantes();?>">
+                
+          <form action="<?php echo RUTA_URL;?>/FSF/modi_resto/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?php echo $datos['resto'][0]->IDrestaurantes;?>">
             <div class="form-row my-2">
               <div class="form-control-lg col-sm-2">
                 <label for="nombre" class="text-white">Nombre:</label>
               </div>
               <div class="form-control-lg col-sm-4">
-                <input class="form-control-lg" type="text" name="nombre" value="<?php echo $r->getNombre();?>">
+                <input class="form-control-lg" type="text" name="nombre" value="<?php echo $datos['resto'][0]->nombre;?>">
               </div>
             </div>
             <div class="form-row my-2">
@@ -28,13 +22,13 @@
                 <label for="dir" class="text-white">Dirección:</label>
               </div>
                 <div class="form-control-lg col-sm-4">
-                <input class="form-control-lg" type="text" name="dire" value="<?php echo $r->getDireccion();?>">
+                <input class="form-control-lg" type="text" name="dire" value="<?php echo $datos['resto'][0]->direccion;?>">
               </div>
               <div class="form-control-lg col-sm-2">
                 <label for="dir" class="text-white">Teléfono:</label>
               </div>
                 <div class="form-control-lg col-sm-4">
-                <input class="form-control-lg" type="text" name="tel" value="<?php echo $r->getTelefono();?>">
+                <input class="form-control-lg" type="text" name="tel" value="<?php echo $datos['resto'][0]->telefono;?>">
               </div>
             </div>
             <div class="form-row my-2">
@@ -42,7 +36,7 @@
                 <label for="web" class="text-white">Web:</label>
               </div>  
               <div class="form-control-lg col-sm-4">
-                <input class="form-control-lg" type="text" name="web" value="<?php echo $r->getWeb();?>">
+                <input class="form-control-lg" type="text" name="web" value="<?php echo $datos['resto'][0]->web;?>">
               </div>
               <div class="form-control-lg col-sm-2">
                 <label for="exampleFormControlSelect1" class="text-white">Delivery:</label>
@@ -62,7 +56,7 @@
                 <label for="exampleFormControlTextarea1"class="text-white">Descripción:</label>
               </div>
               <div class="form-control-lg col-sm-10">
-                <textarea class="form-control-lg" id="exampleFormControlTextarea1" rows="10" cols="80" name="descripcion" value=""><?php echo $r->getDescripcion();?></textarea>
+                <textarea class="form-control-lg" id="exampleFormControlTextarea1" rows="10" cols="80" name="descripcion" value=""><?php echo $datos['resto'][0]->descripcion;?></textarea>
               </div>
             </div>
             <div class="form-row my-2">
@@ -70,7 +64,7 @@
                   <label for="exampleFormControlFile1"class="text-white">Logo:</label>
               </div>
               <div class="form-control-lg col-sm-4">
-                  <input type="file" class="form-control-lg form-control-file text-white" name="logo" required id="exampleFormControlFile1">
+                  <input type="file" class="form-control-lg form-control-file text-white" name="img" required id="exampleFormControlFile1">
               </div>
             </div>
               <div class="form-row my-2">
@@ -96,13 +90,11 @@
               </div>
             <div class="form-row justify-content-center">
               <div class="col-sm-6">
-                <input type="submit" class="btn btn-lg btn-block btn-newResto text-uppercase font-weight-bold my-2" value="Guardar cambios" name="boton"></input>
+                <input type="submit" class="btn btn-lg btn-outline-secondary btn-block text-white  text-uppercase font-weight-bold my-2" value="Guardar cambios" name="boton"></input>
               </div>
             </div>
           </form>
-        <?php }?>
         </div>
-        <a href="home-admin.php" class="btn btn-lg btn-block btn-newResto text-uppercase font-weight-bold my-2">Home</a>
       </div>
     </div>         
 
