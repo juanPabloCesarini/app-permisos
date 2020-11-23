@@ -45,8 +45,21 @@
 			return $fila;
 		}
 		
-		public function actualizarEmpleado($datos){
-			
+		public function editEmpleado($datos){
+			$this->db->query("UPDATE empleados			
+							  SET nombre = :nombre,
+							  	  apellido = :apellido,
+							      usuario = :nick
+							  WHERE IDempleado = :id");
+			$this->db->bind('nombre',$datos['nombre_empleado']);
+			$this->db->bind('apellido',$datos['apellido_empleado']);
+			$this->db->bind('nick',$datos['nick_empleado']);
+			$this->db->bind('id',$datos['id_empleado']);
+			if($this->db->execute()){
+            	return true;
+         	}else{
+            	return false;
+         	}
 		}
 		
 		public function editClave($datosUsuario){
