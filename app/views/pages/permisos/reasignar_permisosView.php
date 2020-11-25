@@ -1,12 +1,14 @@
 <?php require RUTA_APP .'/views/inc/header_inside.php';?>
 <div class="container">
     <h3 class="titulo text-center">Reasignación de Permisos</h3>
-    <h5 class="subtitulo text-center">Permisos otorgados a <?php echo $datos['apellido_Empleado'].','.' '.$datos['nombre_Empleado'];?></h5>
+    
 </div>
 <div class="container">
+
     <div class="row">
         <div class="col-sm-12 col-md-9">"
             <div class="container">
+            <h5 class="subtitulo text-center">Permisos otorgados a <?php echo $datos['apellido_Empleado'].','.' '.$datos['nombre_Empleado'];?></h5>
                 <div class="row">
                 <?php foreach ($datos['lst_permisos'] as $p) : ?>
                     <div class="col-sm-12 col-md-3 text-center">
