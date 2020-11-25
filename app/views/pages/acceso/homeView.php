@@ -1,7 +1,7 @@
 <?php require RUTA_APP .'/views/inc/header_inside.php';?>
 
 <?php if ($_SESSION['rol'] =="1") : ?>
-   <a class="nav-link textoicono" href="<?php echo RUTA_URL;?>/FSF/nuevo_empleado/"><span class="icon-user-plus parrafo text-white ml-4"></span> Nuevo Empleado</a>
+   <a class="nav-link parrafo text-white" href="<?php echo RUTA_URL;?>/FSF/nuevo_empleado/"><span class="icon-user-plus ml-4"></span> Nuevo Empleado</a>
 <p class="parrafo text-white text-center">Nómina empleados</p>
 <div class="container">
 <table class="table bg-light">
@@ -29,7 +29,7 @@
             <?php endif;?>
             <td class="text-center"><a href="<?php echo RUTA_URL;?>/FSF/editar_empleado/<?php echo $empleado->IDempleado;?>"class="btn btn-outline-success ">Editar</a></td>
             
-            <td class="text-center"><a href="#" onclick=confirmar(<?php echo $empleado->IDempleado;?>,'<?php echo $empleado->nombre;?>','<?php echo $empleado->apellido;?>') class="btn btn-outline-danger">Borrar</a></td>
+            <td class="text-center"><a href="#" onclick=confirmar(<?php echo $empleado->IDempleado;?>,'<?php echo $empleado->nombre;?>','<?php echo $empleado->apellido;?>','empleado') class="btn btn-outline-danger">Borrar</a></td>
             
          </tr>
       <?php endif;?>
