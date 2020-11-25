@@ -49,7 +49,7 @@
                      <td><?php echo $r->nombre;?></td>
                      <td><?php echo $r->direccion;?></td>
                      <td class="text-center"><a href="<?php echo RUTA_URL;?>/FSF/edit_resto/<?php echo $r->IDrestaurantes;?>" class="btn btn-outline-success ">Editar</a></td>
-                     <td class="text-center"><a href="#" class="btn btn-outline-danger " onclick="confirmar('<?php echo $r->IDrestaurantes;?>','<?php echo $r->nombre;?>',null)">Borrar</a></td>
+                     <td class="text-center"><a href="#" class="btn btn-outline-danger " onclick="confirmar('<?php echo $r->IDrestaurantes;?>','<?php echo $r->nombre;?>',null,'resto')">Borrar</a></td>
                   </tr>
                <?php endif;?>
             <?php endforeach; ?>

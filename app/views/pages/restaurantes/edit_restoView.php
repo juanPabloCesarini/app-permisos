@@ -5,13 +5,20 @@
         <div class="p-3 my-1">
           <h3 class="p-3 titulo">Actualización de publicidad restaurantes</h3>
         </div>
-        <div class="col-sm-12">
-                
+        <div class="col-sm-12 card form-empleados">
+        
+        
           <form action="<?php echo RUTA_URL;?>/FSF/modi_resto/" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $datos['resto'][0]->IDrestaurantes;?>">
             <div class="form-row my-2">
+              <div class="form-control-lg col-sm-6 m-5">
+                  <img class="img_logo m-3" src="<?php echo RUTA_URL?>/img/logoResto/<?php echo $datos['resto'][0]->logo;?>">
+                  <input type="file" class="form-control-lg form-control-file" name="img" id="exampleFormControlFile1">
+              </div>
+            </div>
+            <div class="form-row my-2 mt-3">
               <div class="form-control-lg col-sm-2">
-                <label for="nombre" class="text-white">Nombre:</label>
+                <label for="nombre" >Nombre:</label>
               </div>
               <div class="form-control-lg col-sm-4">
                 <input class="form-control-lg" type="text" name="nombre" value="<?php echo $datos['resto'][0]->nombre;?>">
@@ -19,13 +26,13 @@
             </div>
             <div class="form-row my-2">
               <div class="form-control-lg col-sm-2">
-                <label for="dir" class="text-white">Dirección:</label>
+                <label for="dir" >Dirección:</label>
               </div>
                 <div class="form-control-lg col-sm-4">
                 <input class="form-control-lg" type="text" name="dire" value="<?php echo $datos['resto'][0]->direccion;?>">
               </div>
               <div class="form-control-lg col-sm-2">
-                <label for="dir" class="text-white">Teléfono:</label>
+                <label for="dir" >Teléfono:</label>
               </div>
                 <div class="form-control-lg col-sm-4">
                 <input class="form-control-lg" type="text" name="tel" value="<?php echo $datos['resto'][0]->telefono;?>">
@@ -33,13 +40,13 @@
             </div>
             <div class="form-row my-2">
               <div class="form-control-lg col-sm-2">
-                <label for="web" class="text-white">Web:</label>
+                <label for="web" >Web:</label>
               </div>  
               <div class="form-control-lg col-sm-4">
                 <input class="form-control-lg" type="text" name="web" value="<?php echo $datos['resto'][0]->web;?>">
               </div>
               <div class="form-control-lg col-sm-2">
-                <label for="exampleFormControlSelect1" class="text-white">Delivery:</label>
+                <label for="exampleFormControlSelect1">Delivery:</label>
               </div>
               <div class="form-control-lg col-sm-4">
                 <select class="form-control-lg" id="exampleFormControlSelect1" name="radio">
@@ -53,26 +60,19 @@
             </div>
             <div class="form-row my-2">
               <div class="form-control-lg col-sm-2">
-                <label for="exampleFormControlTextarea1"class="text-white">Descripción:</label>
+                <label for="exampleFormControlTextarea1">Descripción:</label>
               </div>
               <div class="form-control-lg col-sm-10">
                 <textarea class="form-control-lg" id="exampleFormControlTextarea1" rows="10" cols="80" name="descripcion" value=""><?php echo $datos['resto'][0]->descripcion;?></textarea>
               </div>
             </div>
-            <div class="form-row my-2">
-              <div class="form-control-lg col-sm-2">
-                  <label for="exampleFormControlFile1"class="text-white">Logo:</label>
-              </div>
-              <div class="form-control-lg col-sm-4">
-                  <input type="file" class="form-control-lg form-control-file text-white" name="img" required id="exampleFormControlFile1">
-              </div>
-            </div>
+        
               <div class="form-row my-2">
               <div class="form-check form-control-lg col-sm-2">
-                <label for="" class="text-white">Esta activo?</label>
+                <label for="">Esta activo?</label>
               </div>
               <div class="form-check form-control-lg col-sm-2">
-                <label class="form-check-label text-white" for="exampleRadios1">
+                <label class="form-check-label" for="exampleRadios1">
                   SI
                 </label>
               </div>
@@ -80,7 +80,7 @@
                 <input class="form-check-input" type="radio" name="vigencia" id="exampleRadios1" value="SI" checked>
               </div>
               <div class="form-check form-control-lg col-sm-2">
-                <label class="form-check-label text-white" for="exampleRadios1">
+                <label class="form-check-label" for="exampleRadios1">
                   NO
                 </label>
               </div>
