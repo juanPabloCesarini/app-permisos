@@ -39,7 +39,7 @@
 </div>
    <?php else:?>
    <div class="container">
-      <a href="<?php echo RUTA_URL;?>/FSF/editar_empleado/<?php echo $_SESSION['idEmpl']?>"><button class="btn btn-lg btn-dark"> Editar mis datos</button></a>
+      <h1 class="titulo text-center">Bienvenido</h1>
    </div>
    <?php endif;?>
 <?php require RUTA_APP .'/views/inc/footer.php';?>
