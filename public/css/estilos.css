@@ -101,9 +101,6 @@ width:100%;
 .icon-bin2{
   color:#f50c2b ;
 }
-.btn-home-reasignar{
-  background:#290ea1 ;
-}
 
 
 /*formulario empleado*/
@@ -127,53 +124,7 @@ width:100%;
 
 }
 
-/*botones alta baja listado*/
-.azul{
-  font-size: 25px;
-  background-color: #0096c7;
-  color: white;
-  border:none;
-  margin-bottom: 42px;
-}
 
-
-.verde{
-  font-size: 25px;
-  background-color: #22aa99;
-  color: white;
-  border:none;
-  margin-bottom: 42px;
-}
-
-.rojo{
-  font-size: 25px;
-  background-color:#e63946;
-  color: white;
-  border:none;
-  margin-bottom: 42px;
-}
-
-/* .btn-submit {
-  border-radius: 10px;
-  border: solid 2px #596bcc;
-  background: #5b68ae;
-  color: #f2f2f2;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 0.9rem;
-  letter-spacing: 0.05rem;
-  padding: 0.75rem 1rem;
-  width: 100%;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.btn-submit:hover {
-  background: #5b68ae;
-  border: solid 3px #596bcc;
-  color: black;
-} */
 /*----------------------------- card formulario - card Login ----------------------------------*/
 .form-empleado{
   padding: 30px 40px;
@@ -190,6 +141,14 @@ width:100%;
   margin-bottom: 60px;
   border: none !important; 
   height: 500px;
+  width: 700px;
+}
+.form-email{
+  padding: 30px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: none !important; 
+  height: 300px;
   width: 700px;
 }
 
