@@ -80,8 +80,16 @@ width:100%;
   font-size: 20px;
   padding: 20px;
   color: #0b5f0f;
-
 }
+
+.texto-nick{
+  font-family:'Quicksand', Courier, monospace;
+  font-size: 25px;
+  color: #50e457;
+  padding: 5px 25px 5px 0; 
+}
+
+.texto-nvoemple
 
 /*----- botones login_btn(login) - btn guardar(form) - btn alta(verde)- baja(azul)- listado(rojo)  -----*/
 .icon-unlocked{
@@ -99,7 +107,7 @@ width:100%;
 
 
 /*formulario empleado*/
-.btn-guardar {
+.btn-guardar{
   background-color:  #03045e;
   color: #fff;
   text-transform: uppercase;
@@ -108,8 +116,15 @@ width:100%;
   height: 43px;
   cursor: pointer
 }
-.btn-guardar:hover  {
-  background-color: #0096c7;
+.btn-guardar:hover{
+  background-color: #1d20f7;
+}
+
+/* formulario alta blog*/
+.form-altablog{
+  background-color: #fff;
+  color: #03045e;
+
 }
 
 /*botones alta baja listado*/
