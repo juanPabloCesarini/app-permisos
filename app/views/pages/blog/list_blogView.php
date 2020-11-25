@@ -1,45 +1,37 @@
 <?php require RUTA_APP .'/views/inc/header_inside.php';?>
 <div class="container">
-      <div class="row justify-content-center align-items-center vh-100">
-        <div class="lila p-3 my-1 jumbotron">
-          <h3 class="p-3">Listado de Noticias</h3>
-        </div>
-        <div class="col-sm-12 formulario">
-          <table class="table table-transparent text-white">
-            <thead>
-                <tr class="text-center">
-                    <th scope="col">Categoría</th>
-                    <th scope="col">Autor</th>
-                    <th scope="col">Fecha de Publicación</th>
-                    <th scope="col">Título</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                  require_once('../../newsMOD/modelos/news_CRUD.php');
-                  require_once('../../lib/formateador_fecha.php');
-                  $crud = new CrudNews();
-                  $noticias = $crud->buscar_news();
-                    if ($noticias == NULL){
-                        echo "<div class='text-center text-white'>NO HAY DATOS!!</div>";
-                    }else{
-                    foreach ($noticias as $news){
-                        echo "<tr class='text-center' style='background:{$news->getCategoria_color()};color:black'>
-                                <th scope='row' class='align-middle'>{$news->getCategoria_nombre()}</th>
-                                <td class='align-middle'>{$news->getAutor_apellido()}, {$news->getAutor_nombre()}</td>
-                                <td class='align-middle'>"; echo date('d/m/Y', strtotime($news->getFechaPublicacion())); echo "</td>
-                                <td class='align-middle'>{$news->getTitulo()}</td>
-                                <td><a href='../vistas/form-news-edit.php?id={$news->getIDnovedad()}' class='btn verde text-dark'>Editar</a></td>
-                                <td><a href='../controladores/eliminar-news.php?id={$news->getIDnovedad()}' class='btn amarillo text-dark'>Eliminar</a></td>
-                               </tr>";
-                    }
-                }
-                ?>
-            </tbody>
-          </table>
-        </div>
-        <a href="sugar-admin.php" class="btn btn-lg btn-block lila text-white text-uppercase font-weight-bold my-2">Home</a>
-      </div>
-    </div>
 
+<p class="parrafo text-white text-center">Posteos</p>
+<div class="container">
+<table class="table bg-light">
+   <thead>
+      <tr class="bg-dark">
+         <th class="parrafo text-white">Categoría </th>
+         <th class="parrafo text-white">Autor</th>
+         <th class="parrafo text-white">Fecha de Publicación</th>
+         <th class="parrafo text-white">Título</th>
+         <th class="text-center"><span class=" subtitulo icon-pencil text-success"></span> </th>
+         <th class="text-center"><span class=" subtitulo icon-bin2 text-danger"></span> </th>
+
+      </tr>
+   </thead>
+   <tbody>
+   <?php foreach ($datos['posteos'] as $post) : ?>
+        
+         <tr style='background:<?php echo $post->color;?>'>
+            <th><?php echo $post->nombre;?></th>
+            <td><?php echo $post->apellido .','. $post->nombreAutor;?></td>
+            <td><?php echo date('d/m/Y', strtotime($post->fechaPublicacion));?></td>
+            <td><?php echo $post->titulo;?></td>
+            
+            <td class="text-center"><a href="<?php echo RUTA_URL;?>/FSF/editar_blog/<?php echo $post->IDnovedad;?>"class="btn btn-outline-success ">Editar</a></td>
+            
+            <td class="text-center"><a href="#" onclick="confirmar(<?php echo $post->IDnovedad;?>,'<?php echo $post->titulo;?>',null,'post')" class="btn btn-outline-danger">Borrar</a></td>
+            
+         </tr>
+   <?php endforeach; ?>
+   </tbody>
+</table>
+</div>
+   
 <?php require RUTA_APP .'/views/inc/footer.php';?>
