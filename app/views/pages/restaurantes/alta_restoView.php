@@ -92,10 +92,10 @@
               <?php endif;?>
             <div class="form-row">
               <div class="col-sm-6">
-                <input type="submit" class="btn-guardar btn-lg btn-outline-secondary btn-block text-white text-uppercase font-weight-bold my-2" value="Guardar y Seguir" name="boton"></input>
+                <input type="submit" class="btn-guardar btn-lg btn-guardar btn-block text-white text-uppercase font-weight-bold my-2" value="Guardar y Seguir" name="boton"></input>
               </div>
               <div class="col-sm-6">
-                <input type="submit" class="btn-guardar btn-lg btn-outline-secondary btn-block text-white  text-uppercase font-weight-bold my-2" value="Guardar y Salir"name="boton"></input>
+                <input type="submit" class="btn-guardar btn-lg btn-guardar btn-block text-white  text-uppercase font-weight-bold my-2" value="Guardar y Salir"name="boton"></input>
               </div>
             </div>
           </form>

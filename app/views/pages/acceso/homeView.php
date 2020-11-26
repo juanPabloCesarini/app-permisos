@@ -39,7 +39,8 @@
 </div>
    <?php else:?>
    <div class="container">
-      <h1 class="titulo text-center">Bienvenido</h1>
+      <h1 class="titulo text-center">Bienvenid@</h1>
+      <h4 class="parrafo">Con esta plataforma vas a poder realizar los cambios sin necesidad de contratar servicios de terceros</h4>
    </div>
    <?php endif;?>
 <?php require RUTA_APP .'/views/inc/footer.php';?>

@@ -10,6 +10,7 @@
       	         <th class="subtitulo text-white text-center">Logo</th>
                   <th class="subtitulo text-white text-center">Nombre</th>
                   <th class="subtitulo text-white text-center">Dirección</th>
+                  <?php if($_SESSION['rol']=="2"):?>
                   <?php foreach ($_SESSION['permisos'] as $p):?>
           
           <?php if($p->descripcionPermiso == "UPDATE"):?>
@@ -19,15 +20,21 @@
              <th class="text-center"><span class=" subtitulo icon-bin2 text-danger"></span> </th>
           <?php endif;?>
           <?php endforeach;?>
+          <?php else:?>
+            <th class="text-center"><span class=" subtitulo icon-pencil text-success"></span> </th>
+            <th class="text-center"><span class=" subtitulo icon-bin2 text-danger"></span> </th>
+          <?php endif;?>
                </tr>
             </thead>
             <tbody>
+           
             <?php foreach ($datos['resto'] as $r) : ?>
                <?php if ($r->estaActivo=='SI'):?>
                   <tr>
                      <td class="text-center"> <img class="img_logo" src="<?php echo RUTA_URL?>/img/logoResto/<?php echo $r->logo;?>"></td>
                      <td><?php echo $r->nombre;?></td>
                      <td><?php echo $r->direccion;?></td>
+                     <?php if($_SESSION['rol']=="2"):?>
                      <?php foreach ($_SESSION['permisos'] as $p):?>
           
           <?php if($p->descripcionPermiso == "UPDATE"):?>
@@ -37,6 +44,10 @@
              <td class="text-center"><a href="#" class="btn btn-outline-danger " onclick="confirmar('<?php echo $r->IDrestaurantes;?>','<?php echo $r->nombre;?>',null,'resto')">Borrar</a></td>
           <?php endif;?>
        <?php endforeach;?>
+          <?php else:?>
+            <td class="text-center"><a href="<?php echo RUTA_URL;?>/FSF/edit_resto/<?php echo $r->IDrestaurantes;?>" class="btn btn-outline-success ">Editar</a></td>
+            <td class="text-center"><a href="#" class="btn btn-outline-danger " onclick="confirmar('<?php echo $r->IDrestaurantes;?>','<?php echo $r->nombre;?>',null,'resto')">Borrar</a></td>
+          <?php endif;?>      
                   </tr>
                <?php endif;?>
             <?php endforeach; ?>
@@ -51,6 +62,7 @@
                	<th class="subtitulo text-white text-center">Logo</th>
                   <th class="subtitulo text-white text-center">Nombre</th>
                   <th class="subtitulo text-white text-center">Dirección</th>
+                  <?php if($_SESSION['rol']=="2"):?>
                   <?php foreach ($_SESSION['permisos'] as $p):?>
           
           <?php if($p->descripcionPermiso == "UPDATE"):?>
@@ -60,6 +72,10 @@
              <th class="text-center"><span class=" subtitulo icon-bin2 text-danger"></span> </th>
           <?php endif;?>
           <?php endforeach;?>
+          <?php else:?>
+            <th class="text-center"><span class=" subtitulo icon-pencil text-success"></span> </th>
+            <th class="text-center"><span class=" subtitulo icon-bin2 text-danger"></span> </th>
+          <?php endif;?>
                </tr>
             </thead>
             <tbody>
@@ -69,6 +85,7 @@
                      <td class="text-center"> <img class="img_logo" src="<?php echo RUTA_URL?>/img/logoResto/<?php echo $r->logo;?>"></td>
                      <td><?php echo $r->nombre;?></td>
                      <td><?php echo $r->direccion;?></td>
+                     <?php if($_SESSION['rol']=="2"):?>
                      <?php foreach ($_SESSION['permisos'] as $p):?>
           
                         <?php if($p->descripcionPermiso == "UPDATE"):?>
@@ -78,6 +95,10 @@
                            <td class="text-center"><a href="#" class="btn btn-outline-danger " onclick="confirmar('<?php echo $r->IDrestaurantes;?>','<?php echo $r->nombre;?>',null,'resto')">Borrar</a></td>
                         <?php endif;?>
                      <?php endforeach;?>
+                        <?php else:?>
+                           <td class="text-center"><a href="<?php echo RUTA_URL;?>/FSF/edit_resto/<?php echo $r->IDrestaurantes;?>" class="btn btn-outline-success ">Editar</a></td>
+                           <td class="text-center"><a href="#" class="btn btn-outline-danger " onclick="confirmar('<?php echo $r->IDrestaurantes;?>','<?php echo $r->nombre;?>',null,'resto')">Borrar</a></td>
+                        <?php endif;?>
                    </tr>
                <?php endif;?>
             <?php endforeach; ?>

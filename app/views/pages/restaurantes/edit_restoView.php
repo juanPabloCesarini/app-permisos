@@ -11,8 +11,13 @@
           <form action="<?php echo RUTA_URL;?>/FSF/modi_resto/" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $datos['resto'][0]->IDrestaurantes;?>">
             <div class="form-row my-2">
-              <div class="form-control-lg col-sm-6 m-5">
-                  <img class="img_logo m-3" src="<?php echo RUTA_URL?>/img/logoResto/<?php echo $datos['resto'][0]->logo;?>">
+              <div class="form-control-lg col-sm-2 m-3">
+                  <img class="img_logo" src="<?php echo RUTA_URL?>/img/logoResto/<?php echo $datos['resto'][0]->logo;?>">
+              </div>
+              <div class="form-control-lg col-sm-2 m-3">
+                <label for="nombre" >Logo:</label>
+              </div>
+              <div class="form-control-lg col-sm-4 m-3">
                   <input type="file" class="form-control-lg form-control-file" name="img" id="exampleFormControlFile1">
               </div>
             </div>
@@ -90,7 +95,7 @@
               </div>
             <div class="form-row justify-content-center">
               <div class="col-sm-6">
-                <input type="submit" class="btn btn-lg btn-outline-secondary btn-block text-white  text-uppercase font-weight-bold my-2" value="Guardar cambios" name="boton"></input>
+                <input type="submit" class="btn-guardar btn-lg btn-guardar btn-block text-white  text-uppercase font-weight-bold my-2" value="Guardar cambios" name="boton"></input>
               </div>
             </div>
           </form>
