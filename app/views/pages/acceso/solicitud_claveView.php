@@ -8,6 +8,12 @@
                     <div class="card-header">
                         <h2 class="subtitulo">Recuperar  Contraseña</h2>
                     </div>
+                    <?php if (!empty($datos['msj'])):?>
+                                  <p class="parrafo text-center text-danger"> <?php echo $datos['msj'];?></p>
+                                <?php endif;?>
+                                <?php if (!empty($datoMens['msj'])):?>
+                                  <p class="parrafo text-center text-danger"> <?php echo $datosMens['msj'];?></p>
+                    <?php endif;?>
                     <div class="card-body">
                         <form action="<?php echo RUTA_URL;?>/FSF/solicitar_clave/" method="POST">
                             <div class="input-group form-group">
@@ -23,21 +29,13 @@
                                 </div>
                                 <input type="email" class="form-control" placeholder="Email" name="mail" >
                             </div>
-                            
-                        
-                                <?php if (!empty($datos['msj'])):?>
-                                  <p class="parrafo text-center text-danger"> <?php echo $datos['msj'];?></p>
-                                <?php endif;?>
-                                <?php if (!empty($datoMens['msj'])):?>
-                                  <p class="parrafo text-center text-danger"> <?php echo $datosMens['msj'];?></p>
-                                <?php endif;?>
-                            
+
 
                             <div class="form-group">
                                 <input type="submit" class="btn-guardar" Value="Solicitar Contraseña">
                           
                       
-                               <a href="<?php echo RUTA_URL.'/FSF/modificar_clave/';?>" class="btn-guardar" >Cambiar Contraseña</a>
+                                <button class="btn-guardar"><a href="<?php echo RUTA_URL.'/FSF/modificar_clave/';?>" class="text-white" style="text-decoration:none" >Cambiar Contraseña</a></button>
                             </div>
                         </form>
                     </div>

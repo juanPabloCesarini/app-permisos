@@ -46,17 +46,19 @@
          <span class="icon-spoon-knife text-white"></span> Administrar Restaurantes      
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <?php if($_SESSION['rol']=="2"):?> 
         <?php foreach ($_SESSION['permisos'] as $p):?>
           
           <?php if($p->descripcionPermiso == "CREATE"):?>
             <a class="dropdown-item" href="<?php echo RUTA_URL;?>/FSF/alta_resto/" >Dar de Alta</a>
           <?php endif;?>
 
-          <?php if($p->descripcionPermiso == "READ"):?>
+        <?php endforeach;?>
+        <a class="dropdown-item" href="<?php echo RUTA_URL;?>/FSF/lista_restaurantes/">Listar</a>
+          <?php else:?>
+            <a class="dropdown-item" href="<?php echo RUTA_URL;?>/FSF/alta_resto/" >Dar de Alta</a>
             <a class="dropdown-item" href="<?php echo RUTA_URL;?>/FSF/lista_restaurantes/">Listar</a>
           <?php endif;?>
-
-        <?php endforeach;?>
         </div>
       </li>
 
@@ -65,17 +67,21 @@
          <span class="icon-newspaper  text-white"></span> Administrar Blog      
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <?php if($_SESSION['rol']=="2"):?>
         <?php foreach ($_SESSION['permisos'] as $p):?>
 
           <?php if($p->descripcionPermiso == "CREATE"):?>
             <a class="dropdown-item" href="<?php echo RUTA_URL;?>/FSF/alta_blog/" >Dar de Alta</a>
           <?php endif;?>
+          <?php endforeach;?>
           
-          <?php if($p->descripcionPermiso == "READ"):?>
+            <a class="dropdown-item" href="<?php echo RUTA_URL;?>/FSF/listar_blog/">Listar</a>
+  
+          
+          <?php else:?>
+            <a class="dropdown-item" href="<?php echo RUTA_URL;?>/FSF/alta_blog/" >Dar de Alta</a>
             <a class="dropdown-item" href="<?php echo RUTA_URL;?>/FSF/listar_blog/">Listar</a>
           <?php endif;?>
-
-        <?php endforeach;?>
         </div>
       </li>
       <li class="nav-item">
